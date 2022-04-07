@@ -1,29 +1,24 @@
 #' Validación de las variables tipo de cobertura y cobertura vegetal
 #'
-#' @param sf  Objeto resultante de la función 'diccionari_cv'
+#' @param sf  Objeto sf
 #'
-#' @return Message
+#' @return text string
 #' @export
-#'
-#' @examples
-#' # diccionario_cv(filename) |>
-#' # validacion_cv()
-validacion_cv <- function(sf) {
+review_cv_valid <- function(sf) {
   "%w/o%" <- function(x, y) x[!x %in% y] #--  x without y
-  #' validacion de tipo de cobertura
+  # validación de tipo de cobertura
   niveles_cv <- c("ARBÓREA", "MATORRAL", "HERBAZAL", "PASTIZAL",
                   "ESCASA COBERTURA", "ZONA URBANA")
-  #
   cobert_veg <- sf |>
-    pull(cobert_veg) |>
+    dplyr::pull(cobert_veg) |>
     unique()
   if("tipo_cober" %in% names(sf)){
     tipo_cober <- c("COBERTURA ANTRÓPICA", "COBERTURA NATURAL")
     tipo <- sf |>
-      pull(tipo_cober) |>
+      dplyr::pull(tipo_cober) |>
       unique()
     cober <- sf |>
-      pull(cobert_veg) |>
+      dplyr::pull(cobert_veg) |>
       unique()
     xx <- cober %w/o% niveles_cv
     x <- tipo %w/o% tipo_cober
@@ -45,7 +40,7 @@ validacion_cv <- function(sf) {
   else if(!"tipo_cober" %in% names(sf)){
 
     cober <- sf |>
-      pull(cobert_veg) |>
+      dplyr::pull(cobert_veg) |>
       unique()
     xx <- cober %w/o% niveles_cv
 

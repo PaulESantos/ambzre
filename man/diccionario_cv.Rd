@@ -2,27 +2,16 @@
 % Please edit documentation in R/diccionariocv.R
 \name{diccionario_cv}
 \alias{diccionario_cv}
-\title{Diccionario cobertura vegetal}
+\title{Diccionario de datos cobertura vegetal}
 \usage{
 diccionario_cv(filename)
 }
 \arguments{
-\item{filename}{Path del archivo .shp}
+\item{filename}{sf path}
 }
 \value{
-sf object
+objecto de tipo sf
 }
 \description{
-Diccionario cobertura vegetal
-}
-\examples{
-seleccionar el nombre de la columna que contiene la informacion
-del tipo de cobertura NATURAL - ANTROPICA
-seleccionar el nombre de la columna que contiene la informacion
-de los tipos de cobertura vegetal
-ARBOREA - HERBAZAL - MATORRAL- PASTIZAL...
-seleccione de columnas presentes en el shapefile
-recuperar columnas presentes en el shp
-renombrar las columnas
-validar los niveles de cobertura vegetal
+Diccionario de datos cobertura vegetal
 }

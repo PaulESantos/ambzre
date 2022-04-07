@@ -2,12 +2,23 @@ Package: ambzre
 Title: Manipulación de las tablas de atributos 
 Version: 0.0.0.1
 Authors@R: 
-    person("Paul Efren", "Santos", , "paulefrens@gmail.com", role = c("aut", "cre"))
+    c(
+      person("Paul Efren", "Santos", 
+      email = "paulefrens@gmail.com",
+              role = c("aut", "cre")),
+      person("SGOT ZRE41 MPC",
+             role = c("aut"))
+             )
 Description: Permite la revisión y estandarización de las tablas de atributos de los shapefiles producidos por el componente ambiental del proyecto ZRE41.
 License: MIT + file LICENSE
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
+Date: 2022-03-23
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Imports: 
+    crayon,
+    dplyr,
+    janitor,
+    purrr,
+    sf,
+    stringr
