@@ -14,7 +14,7 @@ diccionario_ean <- function(filename) {
   print(head(shp))
 
   # message(crayon::green(filename))
-  message(crayon::red(toupper(gsub(
+  message(crayon::green(toupper(gsub(
     ".shp",
     "",
     str_extract_after(
@@ -73,8 +73,11 @@ diccionario_ean <- function(filename) {
 
   if (length(names(output)) == length(full_names)) {
     message(crayon::green("Informacion completa"))
+    return(output)
   } else {
+
     message(crayon::green("Es necesario añadir informacion"))
-    # head(output)
+    # h
+    return(output)
   }
 }

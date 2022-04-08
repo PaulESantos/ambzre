@@ -72,10 +72,10 @@ diccionario_propzoni <- function(filename) {
 
   if (length(names(output)) == length(full_names)) {
     # print(head(output))
-    output
+    return(output)
     message(crayon::green("Informacion completa!!"))
   } else {
     message(crayon::green("Añadir informacion!!!"))
-    # head(output)
+    return(output)
   }
 }

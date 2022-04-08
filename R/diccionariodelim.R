@@ -14,7 +14,7 @@ diccionario_delim <- function(filename) {
   # seleccionar columnas
   print(head(shp))
 
- message(crayon::red(toupper(gsub(
+ message(crayon::green(toupper(gsub(
     ".shp",
     "",
     str_extract_after(
@@ -44,9 +44,9 @@ diccionario_delim <- function(filename) {
     dplyr::all_of(vars1),
       geometry
     )
-  out
+
   colnames(out) <- names_vars1
-  out
+
   output <- out|>
     dplyr::mutate(
       zre = paste0("ZRE", zre)|>  toupper(),
@@ -81,6 +81,6 @@ diccionario_delim <- function(filename) {
       )|>
       dplyr::relocate(geometry, .after = dplyr::last_col())
   }
-  print(head(output1))
+  return(output1)
 
 }
