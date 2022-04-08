@@ -16,7 +16,7 @@ diccionario_cv <- function(filename) {
 
   print(head(shp))
 
-  message(crayon::red(toupper(gsub(
+  message(crayon::green(toupper(gsub(
     ".shp",
     "",
     str_extract_after(
@@ -26,7 +26,7 @@ diccionario_cv <- function(filename) {
     )
   ))))
   # ingresar código de las zona de reglamentación
-  zre <- readline(prompt = "Seleccionar la variable ZRE:")
+  zre <- readline(prompt = "Ingresar codigo de la ZRE:")
   if (!grepl("[a-z][0-9]", zre)) {
     zre <- NA_real_
   }

@@ -37,26 +37,15 @@ Para instalar **ambzre** desde el repositoriod e GitHub:
 library(ambzre)
 library(here)
 library(tidyverse)
-## basic example code
-files <- list.files(path = here::here("inst", "extdata"),
-                    pattern = "shp$",
-                    full.names = TRUE)
-```
- Archivos shapefile presentes:
- 
-``` r
-files
-[1] "D:/ambzre/inst/extdata/cobertura_vegetal_sa01.shp"   
-[2] "D:/ambzre/inst/extdata/ecosistemas_sa01.shp"        
-[3] "D:/ambzre/inst/extdata/grado_antropizacion_sa01.shp" 
-[4] "D:/ambzre/inst/extdata/zpa_sa01.shp" 
 ```
 
 Para modificar los diccionarios de datos de los diferentes shapefiles:
 
-```{r cv, eval=FALSE}
-df <- diccionario_cv("D:/ambzre/inst/extdata/cobertura_vegetal_sa01.shp" )
+```{r fcv, eval=FALSE}
+df <- diccionario_cv(system.file("extdata/cobertura_vegetal_sa01.shp",
+                     package = "ambzre"))
 ```
+
 
 ``` r
 Reading layer `cobertura_vegetal_sa01' from data source `D:\ambzre\inst\extdata\cobertura_vegetal_sa01.shp' using driver `ESRI Shapefile'
@@ -77,8 +66,32 @@ Projected CRS: WGS 84 / UTM zone 19S
 4        4        1       0  26.30083  Arborea  19.41983  26.30083 MULTIPOLYGON (((175640.4 85...
 5        5        1       0  24.83902  Arborea  27.95120  24.83902 MULTIPOLYGON (((175662 8502...
 6        6        1       0  88.82461  Arborea  56.55997  88.82461 MULTIPOLYGON (((175691.1 85...
-COBERTURA_VEGETAL_SA01
-Seleccionar la variable ZRE:
+```
+
+Esta función solicita ingresar información referente al código de la **ZRE**
+
+``` r
+Ingresar codigo de la ZRE:
+```
+
+Ingresar el nombre de la columna que contiene la información del tipo de cobertura (**Natural o antropica**)
+
+``` r
+Seleccionar la variable TIPO COBERTURA:
+```
+Ingresar el nombre de la columna que contiene la información de la categoría de **Cobertura vegetal**:
+
+``` r
+Seleccionar la variable COBERTURA VEGETAL:
+```
+
+Una vez ingresada esta información y ejecutada la función el shapefile puede ser exportado con la función ´shape_write()´
+
+``` r
+df |> 
+shpe_write(folder = "path de la cartepa donde se guardara los datos",
+           filename = "nombrecon el cual se guardara el archivo shp"
+           )
 ```
 
 
