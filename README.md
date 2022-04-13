@@ -87,7 +87,7 @@ puede ser exportado con la función ´shape_write()´
 
 ``` r
 df |> 
-shpe_write(folder = "path de la cartepa donde se guardara los datos",
+shp_write(folder = "path de la cartepa donde se guardara los datos",
            filename = "nombrecon el cual se guardara el archivo shp"
            )
 ```
