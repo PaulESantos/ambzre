@@ -20,7 +20,7 @@ ambiental del proyecto ZRE41.
 Para instalar **ambzre** desde el repositoriod e GitHub:
 
 ``` r
-# remotes::install_github("PaulESantos/ambzre")
+remotes::install_github("PaulESantos/ambzre")
 ```
 
 ## Ejemplo
