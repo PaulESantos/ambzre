@@ -1,8 +1,9 @@
 #' Diccionario propuesta de zonificacion
 #' @description Diccionario de los shapefiles de las propuestas de zonificacion:
 #' - **ZPCE** ZONAS DE PROTECCION Y CONSERVACION ECOLOGICA
-#' - **ZIERE** ZONAS DE INTERVENCION ESPECIESL Y RECUPERACION DE ECOSISTEMAS
-#' - **ZPRH** ZONAS DE PROTECCION DEL RECURSO HIDRICO
+#' - **EPCE** ESPACIOS DE PROTECCION Y CONSERVACION ECOLOGICA
+#' - **EIERE** ESPACIOS DE INTERVENCION ESPECIESL Y RECUPERACION DE ECOSISTEMAS
+#' - **EPRH** ESPACIOS DE PROTECCION DEL RECURSO HIDRICO
 #'
 #' @param filename File path
 #'
@@ -21,13 +22,15 @@ diccionario_propzoni <- function(filename) {
   message(crayon::green(filename))
 
   zre <- readline(prompt = "Ingresar nombre de la ZRE:")
-  codigo <- readline(prompt = "Ingresar codigo. 1 - ZPCE / 2 - ZIERE / 3 - ZPRH :")
+  codigo <- readline(prompt = "Ingresar codigo.\n 1 - ZPCE / 2 - EPCE\n 3 - EIERE / 4 - EPRH :")
   if (codigo == 1) {
     codigo <- "ZPCE"
-  } else if (codigo == 2) {
-    codigo <- "ZIERE"
-  } else if (codigo == 3) {
-    codigo <- "ZPRH"
+  }else if (codigo == 2) {
+    codigo <- "EPCE"
+  }else if (codigo == 3) {
+    codigo <- "EIERE"
+  } else if (codigo == 4) {
+    codigo <- "EPRH"
   }
 
   out <- shp |>
@@ -47,8 +50,10 @@ diccionario_propzoni <- function(filename) {
     ) |>
     dplyr::mutate(propuesta = dplyr::case_when(
       codigo == "ZPCE" ~ "ZONA DE PROTECCIÓN Y CONSERVACIÓN ECOLÓGICA",
-      codigo == "ZIERE" ~ "ZONA DE INTERVENCIÓN ESPECIAL Y RESTAURACIÓN DE ECOSISTEMAS",
-      codigo == "ZPRH" ~ "ZONA DE PROTECCIÓN DE RECURSO HÍDRICO",
+      codigo == "EPCE" ~ "ESPACIOS DE PROTECCIÓN Y CONSERVACIÓN ECOLÓGICA",
+      codigo == "EIERE" ~ "ESPACIOS DE INTERVENCIÓN ESPECIAL Y RESTAURACIÓN DE ECOSISTEMAS",
+      codigo == "EPRH" ~ "ESPACIOS DE PROTECCIÓN DE RECURSO HÍDRICO",
+      TRUE ~ NA_character_
     )) |>
     dplyr::mutate(distrito = dplyr::case_when(
       stringr::str_detect(zre, "CU") ~ "CUSCO",

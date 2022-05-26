@@ -3,6 +3,7 @@
 export(diccionario_cv)
 export(diccionario_delim)
 export(diccionario_ean)
+export(diccionario_een)
 export(diccionario_ga)
 export(diccionario_propzoni)
 export(review_cv_valid)
