@@ -25,7 +25,7 @@ diccionario_ga <- function(filename) {
 
 
   # ingresar código de las zona de reglamentación
-  zre <- readline(prompt = "Seleccionar la variable ZRE:")
+  zre <- readline(prompt = "Ingresar el nombre de la ZRE:")
   if (!grepl("[a-z][0-9]", zre)) {
     zre <- NA_real_
   }
